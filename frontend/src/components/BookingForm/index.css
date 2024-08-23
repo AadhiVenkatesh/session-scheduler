@@ -1,0 +1,99 @@
+/* BookingForm.css */
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.heading {
+  text-align: center;
+  color: #333;
+}
+
+.label {
+  display: block;
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+.input,
+.select {
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+
+  .heading {
+    font-size: 24px;
+  }
+
+  .label {
+    font-size: 14px;
+  }
+
+  .input,
+  .select {
+    font-size: 14px;
+  }
+
+  .button {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .heading {
+    font-size: 20px;
+  }
+
+  .label {
+    font-size: 12px;
+  }
+
+  .input,
+  .select {
+    font-size: 12px;
+  }
+
+  .button {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+}
+
+.booking-list {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.booking-list-item {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
