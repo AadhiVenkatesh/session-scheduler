@@ -5,6 +5,8 @@ import PaymentConfirmation from "../PaymentConfirmation";
 
 import "./index.css";
 
+const backendUrl = process.env.REACT_APP_BACKEND_URL || "http://localhost:5000";
+
 const BookingForm = () => {
   const [student, setStudent] = useState({ name: "", area_of_interest: "" });
   const [studentID, setStudentID] = useState(null);
@@ -21,7 +23,7 @@ const BookingForm = () => {
   useEffect(() => {
     if (student.area_of_interest) {
       axios
-        .get("http://localhost:5000/mentors", {
+        .get(`${backendUrl}/mentors`, {
           params: { area_of_interest: student.area_of_interest },
         })
         .then((response) => setMentors(response.data))
@@ -41,7 +43,7 @@ const BookingForm = () => {
   // Fetch all bookings
   useEffect(() => {
     axios
-      .get("http://localhost:5000/bookings")
+      .get(`${backendUrl}/bookings`)
       .then((response) => setAllBookings(response.data))
       .catch((error) => console.error("Error fetching all bookings:", error));
   }, []);
@@ -49,10 +51,7 @@ const BookingForm = () => {
   // Handle student registration/fetch student ID
   const handleStudentSubmission = async () => {
     try {
-      const response = await axios.post(
-        "http://localhost:5000/students",
-        student
-      );
+      const response = await axios.post(`${backendUrl}/students`, student);
       setStudentID(response.data.student_id); // Assume backend returns the created/fetched student ID
     } catch (error) {
       console.error("Error creating/fetching student:", error);
@@ -71,10 +70,7 @@ const BookingForm = () => {
     };
 
     try {
-      const response = await axios.post(
-        "http://localhost:5000/bookings",
-        bookingData
-      );
+      const response = await axios.post(`${backendUrl}/bookings`, bookingData);
       setIsBookingConfirmed(true);
       setBookingID(response.data.booking_id);
     } catch (error) {
